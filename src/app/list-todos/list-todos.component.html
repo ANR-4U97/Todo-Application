@@ -1,0 +1,36 @@
+<h1>Todo</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>is Completed?</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todos of todo; let i = index">
+        <td>{{ todos.description }}</td>
+        <td>{{ todos.estimatedCompletionDate }}</td>
+        <td>{{ todos.status }}</td>
+        <td class="text-center">
+          <button class="btn btn-danger" (click)="deleteItem(todos.id)">
+            Delete
+          </button>
+          <button
+            class="btn btn-warning"
+            style="margin-left: 10px"
+            routerLink="/update/{{ i }}"
+            (click)="pushData(i)"
+          >
+            Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" (click)="addTodo()">Add a Todo</button>
+</div>
+<!-- <div class="alert alert-warning"></div> -->
